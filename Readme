@@ -1,0 +1,37 @@
+This folder contains 2 files one for converting the fits files to tfrecords. And the other for training and testing from the tfrecords. Tensorflow input pipeline is decribed here  https://www.tensorflow.org/programmers_guide/datasets. Also - https://www.tensorflow.org/versions/master/performance/datasets_performance. 
+
+1. create_TFRecords.py - takes fits directory and converts  it into single tfrecord file
+
+usage: create_TFRecords.py [-h] [--inp_fits_dir INP_FITS_DIR]
+                           [--out_fl_nm OUT_FL_NM] [--out_dir OUT_DIR]
+
+  -h, --help            show this help message and exit
+  --inp_fits_dir INP_FITS_DIR
+                        The location of the fitsfiles
+  --out_fl_nm OUT_FL_NM
+                        Name for the output tfrecords file
+  --out_dir OUT_DIR     Output Location
+
+python create_TFRecords.py  --inp_fits_dir "/home/patel.3140/ASSASIN/Astro_Code/TestInput/Test_astro/Deep_22_15k/deep/deepl3" --out_fl_nm "tfrecordfile" --out_dir "/home/patel.3140/ASSASIN/Astro_Code/TestInput/Test_astro/Deep_22_15k/deep/TFRecord
+
+2. Astro_CNN.py - Trains/Tests using the tfrecords 
+
+usage: Astro_CNN.py [-h] [--Train TRAIN] [--Test TEST TEST]
+                    [--out_dir OUT_DIR]
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --Train TRAIN      The location of the tfrecords
+  --Test TEST TEST   First argument the location of the test images and Second
+                     argument the location of the model
+  --out_dir OUT_DIR  Output Location
+
+
+For Training
+
+python Astro_CNN.py --Train "/home/patel.3140/ASSASIN/Astro_Code/TestInput/Test_astro/Deep_22_15k/deep/TFRecord/Train.tfrecords" --out_dir ./outputhere/
+
+For Testing
+
+python Astro_CNN.py --Test "/home/patel.3140/ASSASIN/Astro_Code/TestInput/Test_astro/Deep_22_15k/deep/TFRecord/Test.tfrecords" "./outdir/"
+
