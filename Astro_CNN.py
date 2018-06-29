@@ -99,13 +99,13 @@ def Test(model_dir, test_fl, batch_size_val=100):
     filename = graph.get_tensor_by_name("filename:0")
     batch_size = graph.get_tensor_by_name("batch_size:0")
     num_epochs = graph.get_tensor_by_name("num_epochs:0")
-    dataset = tf.data.TFRecordDataset(filename)
-    dataset = dataset.map(decode)
-    dataset = dataset.map(augment)
-    dataset = dataset.map(normalize)
+    # dataset = tf.data.TFRecordDataset(filename)
+    # dataset = dataset.map(decode)
+    # dataset = dataset.map(augment)
+    # dataset = dataset.map(normalize)
 
-    dataset = dataset.repeat(num_epochs)
-    dataset = dataset.batch(batch_size)
+    # dataset = dataset.repeat(num_epochs)
+    # dataset = dataset.batch(batch_size)
     
     with tf.name_scope('accuracy'):
       correct_prediction = tf.equal(tf.argmax(y_conv, 1), tf.argmax(y_, 1))

@@ -93,7 +93,7 @@ def main(opts):
                 fl_out.write(file.split('/')[-1]+ " : ")
                 fl_out.write(str(e)+"\n")
             continue
-    convert_to(images[:i], TrueClass[:i], writable(out_dir, "Full"), i)
+    convert_to(images[:i], TrueClass[:i], writable(out_dir, opts.out_fl_nm[0]), i)
 
 
 
